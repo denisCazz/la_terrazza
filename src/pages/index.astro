@@ -1,16 +1,212 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
 
+const services = [
+  { icon: "♿", name: "Accessibile" },
+  { icon: "❄️", name: "Aria condizionata" },
+  { icon: "🌳", name: "Tavoli all’aperto" },
+  { icon: "🅿️", name: "Parcheggio non custodito" },
+  { icon: "🎉", name: "Eventi privati" },
+  { icon: "🚬", name: "Area fumatori" },
+  { icon: "🥡", name: "Take away" },
+  { icon: "🐾", name: "Accettiamo animali domestici" },
+];
+
+const payments = [
+  "American Express", "Contanti", "Pagamento contactless", "Mastercard", "VISA", "Carta di debito", "Apple Pay", "Maestro"
+];
+
+const hours = [
+  { day: "Lunedì", time: "18:30 - 23:00" },
+  { day: "Martedì", time: "Chiuso" },
+  { day: "Mercoledì", time: "18:30 - 23:00" },
+  { day: "Giovedì", time: "18:30 - 23:00" },
+  { day: "Venerdì", time: "18:30 - 23:00" },
+  { day: "Sabato", time: "18:30 - 23:00" },
+  { day: "Domenica", time: "18:30 - 23:00" },
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Pizzeria Ristorante La Terrazza | Carmagnola">
+	<!-- Navigation -->
+	<Navbar />
+
+	<!-- Hero Section -->
+	<section id="home" class="relative h-screen flex items-center justify-center bg-stone-900 text-white overflow-hidden">
+		<div class="absolute inset-0 z-0">
+			<img 
+                src="/foto_orizzontale.jpg" 
+                alt="Ristorante background" 
+                class="w-full h-full object-cover opacity-40"
+            />
+		</div>
+		<div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
+			<h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">Pizzeria Ristorante<br/>La Terrazza</h1>
+			<p class="text-xl md:text-2xl mb-10 font-light italic">"Dove la tradizione incontra il gusto autentico"</p>
+			<div class="flex flex-col sm:flex-row gap-4 justify-center">
+				<a href="tel:+390119711419" class="bg-olive-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-olive-700 transition-colors shadow-lg">Chiama ora</a>
+				<a href="/menu" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-stone-900 transition-colors">Menu</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- About Section -->
+	<section id="about" class="py-20 bg-white">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+				<div class="space-y-6">
+					<h2 class="text-4xl font-bold text-stone-800">Chi Siamo</h2>
+					<p class="text-xl text-stone-600 italic">"Non esiste amore più sincero di quello per il cibo."</p>
+					<div class="w-20 h-1 bg-olive-600"></div>
+					<p class="text-stone-600 leading-relaxed">
+						Benvenuti alla Pizzeria Ristorante La Terrazza.
+						Vi accogliamo in una location curata e accogliente, con un menù ricco di specialità e ingredienti di prima qualità!
+					</p>
+					<p class="text-stone-600 leading-relaxed">
+						Venite a trovarci per assaporare le nostre prelibatezze, dalla pizza croccante ai piatti della tradizione.
+					</p>
+				</div>
+				<div class="grid grid-cols-2 gap-4">
+					<img src="/foto1.jpg" alt="Food 1" class="rounded-lg shadow-md w-full h-64 object-cover transform translate-y-8">
+					<img src="/foto2.jpg" alt="Food 2" class="rounded-lg shadow-md w-full h-64 object-cover">
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Gallery Section -->
+	<section id="gallery" class="py-20 bg-stone-50">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center mb-16">
+				<h2 class="text-4xl font-bold text-stone-800 mb-4">La Nostra Galleria</h2>
+				<div class="w-20 h-1 bg-olive-600 mx-auto"></div>
+				<p class="mt-4 text-stone-600">Un'anteprima dei nostri piatti e della nostra location</p>
+			</div>
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+				<div class="overflow-hidden rounded-lg shadow-lg h-80 group">
+					<img src="/foto3.jpg" alt="Gallery 1" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+				</div>
+				<div class="overflow-hidden rounded-lg shadow-lg h-80 group">
+					<img src="/foto1.jpg" alt="Gallery 2" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+				</div>
+				<div class="overflow-hidden rounded-lg shadow-lg h-80 group">
+					<img src="/foto2.jpg" alt="Gallery 3" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Services Section -->
+	<section id="services" class="py-20 bg-stone-100">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center mb-16">
+				<h2 class="text-4xl font-bold text-stone-800 mb-4">I Nostri Servizi</h2>
+				<div class="w-20 h-1 bg-olive-600 mx-auto"></div>
+			</div>
+			
+			<div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
+				{services.map(service => (
+					<div class="bg-white p-6 rounded-xl shadow-sm text-center hover:shadow-md transition-shadow">
+						<div class="text-4xl mb-4">{service.icon}</div>
+						<h3 class="font-semibold text-stone-800">{service.name}</h3>
+					</div>
+				))}
+			</div>
+
+			<div class="text-center border-t border-stone-200 pt-12">
+				<h3 class="text-2xl font-bold text-stone-800 mb-8">Metodi di Pagamento Accettati</h3>
+				<div class="flex flex-wrap justify-center gap-4">
+					{payments.map(payment => (
+						<span class="bg-white px-4 py-2 rounded-full text-sm font-medium text-stone-600 shadow-sm border border-stone-200">
+							{payment}
+						</span>
+					))}
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Info & Contact Section -->
+	<section id="info" class="py-20 bg-stone-900 text-white">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+				
+				<!-- Hours -->
+				<div>
+					<h3 class="text-2xl font-bold mb-6 text-olive-500">Orari di Apertura</h3>
+					<ul class="space-y-3">
+						{hours.map(item => (
+							<li class="flex justify-between border-b border-stone-700 pb-2">
+								<span class="font-medium">{item.day}</span>
+								<span class={item.time === 'Chiuso' ? 'text-red-400' : 'text-stone-300'}>{item.time}</span>
+							</li>
+						))}
+					</ul>
+                    <div class="mt-8">
+                        <h4 class="text-lg font-semibold text-olive-500 mb-2">Consegna a domicilio</h4>
+                        <p class="text-stone-300 text-sm">Disponibile Lun, Mer, Gio, Ven, Dom: 19:00 - 23:00</p>
+                    </div>
+				</div>
+
+				<!-- Contact Info -->
+				<div class="text-center md:text-left">
+					<h3 class="text-2xl font-bold mb-6 text-olive-500">Contatti</h3>
+					<div class="space-y-4">
+						<p class="flex items-center justify-center md:justify-start gap-3">
+							<span class="text-2xl">📍</span>
+							<span>Via Susa 16, 10022 Carmagnola (TO)</span>
+						</p>
+						<p class="flex items-center justify-center md:justify-start gap-3">
+							<span class="text-2xl">📞</span>
+							<a href="tel:+390119711419" class="hover:text-olive-500 transition-colors">011 971 1419</a>
+						</p>
+						<p class="flex items-center justify-center md:justify-start gap-3">
+							<span class="text-2xl">📱</span>
+							<a href="tel:+393345849226" class="hover:text-olive-500 transition-colors">+39 334 584 9226</a>
+						</p>
+						<p class="flex items-center justify-center md:justify-start gap-3">
+							<span class="text-2xl">✉️</span>
+							<a href="mailto:laterrazzadiale@libero.it" class="hover:text-olive-500 transition-colors">laterrazzadiale@libero.it</a>
+						</p>
+                        <div class="mt-8">
+                            <a href="mailto:laterrazzadiale@libero.it" class="inline-block bg-olive-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-olive-700 transition-colors w-full text-center">
+                                Invia un messaggio
+                            </a>
+                        </div>
+					</div>
+				</div>
+
+				<!-- Map Placeholder -->
+				<div id="map-container" class="h-full min-h-[300px] bg-stone-800 rounded-lg overflow-hidden relative">
+                    <div id="map-placeholder" class="absolute inset-0 flex items-center justify-center text-center p-4">
+                        <p class="text-stone-400">
+                            Per visualizzare la mappa di Google Maps è necessario accettare i cookie.
+                        </p>
+                    </div>
+				</div>
+                <script>
+                    const container = document.getElementById('map-container');
+                    const placeholder = document.getElementById('map-placeholder');
+                    
+                    if (localStorage.getItem('cookie-consent') === 'true' && container && placeholder) {
+                        placeholder.style.display = 'none';
+                        const iframe = document.createElement('iframe');
+                        iframe.width = "100%";
+                        iframe.height = "100%";
+                        iframe.style.border = "0";
+                        iframe.style.minHeight = "300px";
+                        iframe.loading = "lazy";
+                        iframe.allowFullscreen = true;
+                        iframe.src = "https://maps.google.com/maps?q=Via+Susa+16+Carmagnola&t=&z=15&ie=UTF8&iwloc=&output=embed";
+                        container.appendChild(iframe);
+                    }
+                </script>
+			</div>
+		</div>
+	</section>
+
+	<!-- Footer -->
+	<Footer />
+</Layout>

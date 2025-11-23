@@ -1,0 +1,47 @@
+<div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-stone-900/95 backdrop-blur text-white p-4 z-50 transform translate-y-full transition-transform duration-300 shadow-lg border-t border-stone-700 hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="text-sm text-stone-300 text-center md:text-left">
+            <p>
+                Questo sito utilizza cookie tecnici e di terze parti (Google Maps) per migliorare la tua esperienza di navigazione. 
+                Per visualizzare la mappa è necessario accettare i cookie.
+                <a href="/cookie-policy" class="underline hover:text-olive-400 transition-colors">Leggi la Cookie Policy</a>.
+            </p>
+        </div>
+        <div class="flex gap-4">
+            <button id="accept-cookies" class="bg-olive-600 text-white px-6 py-2 rounded-full text-sm font-semibold hover:bg-olive-700 transition-colors whitespace-nowrap">
+                Accetta tutti
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const banner = document.getElementById('cookie-banner');
+    const acceptBtn = document.getElementById('accept-cookies');
+    const storageKey = 'cookie-consent';
+
+    // Check if user has already consented
+    const hasConsented = localStorage.getItem(storageKey);
+
+    if (!hasConsented) {
+        // Show banner
+        banner?.classList.remove('hidden');
+        // Small delay for animation
+        setTimeout(() => {
+            banner?.classList.remove('translate-y-full');
+        }, 100);
+    } else {
+        // If consented, we can enable features if needed
+        document.documentElement.classList.add('cookies-accepted');
+    }
+
+    acceptBtn?.addEventListener('click', () => {
+        localStorage.setItem(storageKey, 'true');
+        banner?.classList.add('translate-y-full');
+        document.documentElement.classList.add('cookies-accepted');
+        
+        // Reload to enable scripts/iframes that might depend on this
+        // Or just dispatch an event
+        window.location.reload();
+    });
+</script>

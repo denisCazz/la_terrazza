@@ -1,0 +1,294 @@
+---
+import { menuData } from '../data/menu';
+
+const formatPrice = (price: number) => {
+  return new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR' }).format(price);
+};
+---
+
+<section id="menu" class="py-20 bg-stone-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold text-stone-800 mb-4">Il Nostro Menu</h2>
+      <div class="w-20 h-1 bg-olive-600 mx-auto"></div>
+      <p class="mt-4 text-stone-600">Scopri le nostre specialità di terra e di mare</p>
+    </div>
+
+    <!-- Antipasti -->
+    <div class="text-center mb-12 mt-16">
+        <h3 class="text-3xl font-bold text-stone-800 mb-2 font-serif">Antipasti</h3>
+        <div class="w-16 h-1 bg-olive-600 mx-auto"></div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <div>
+        <h4 class="text-xl font-bold text-olive-700 mb-6 mt-8 border-b border-olive-200 pb-2 inline-block">Terra</h4>
+        {menuData.antipasti.terra.map(item => (
+            <div class="mb-6 break-inside-avoid">
+                <div class="flex justify-between items-baseline mb-1">
+                <h5 class="text-lg font-bold text-stone-800">{item.nome}</h5>
+                <span class="text-olive-600 font-bold ml-4">{formatPrice(item.prezzo)}</span>
+                </div>
+                {item.descrizione && <p class="text-stone-600 text-sm italic">{item.descrizione}</p>}
+            </div>
+        ))}
+      </div>
+      <div>
+        <h4 class="text-xl font-bold text-olive-700 mb-6 mt-8 border-b border-olive-200 pb-2 inline-block">Mare</h4>
+        {menuData.antipasti.mare.map(item => (
+            <div class="mb-6 break-inside-avoid">
+                <div class="flex justify-between items-baseline mb-1">
+                <h5 class="text-lg font-bold text-stone-800">{item.nome}</h5>
+                <span class="text-olive-600 font-bold ml-4">{formatPrice(item.prezzo)}</span>
+                </div>
+                {item.descrizione && <p class="text-stone-600 text-sm italic">{item.descrizione}</p>}
+            </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Primi -->
+    <div class="text-center mb-12 mt-16">
+        <h3 class="text-3xl font-bold text-stone-800 mb-2 font-serif">Primi Piatti</h3>
+        <div class="w-16 h-1 bg-olive-600 mx-auto"></div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <div>
+        <h4 class="text-xl font-bold text-olive-700 mb-6 mt-8 border-b border-olive-200 pb-2 inline-block">Terra</h4>
+        {menuData.primi.terra.map(item => (
+            <div class="mb-6 break-inside-avoid">
+                <div class="flex justify-between items-baseline mb-1">
+                <h5 class="text-lg font-bold text-stone-800">{item.nome}</h5>
+                <span class="text-olive-600 font-bold ml-4">{formatPrice(item.prezzo)}</span>
+                </div>
+                {item.descrizione && <p class="text-stone-600 text-sm italic">{item.descrizione}</p>}
+            </div>
+        ))}
+      </div>
+      <div>
+        <h4 class="text-xl font-bold text-olive-700 mb-6 mt-8 border-b border-olive-200 pb-2 inline-block">Mare</h4>
+        {menuData.primi.mare.map(item => (
+            <div class="mb-6 break-inside-avoid">
+                <div class="flex justify-between items-baseline mb-1">
+                <h5 class="text-lg font-bold text-stone-800">{item.nome}</h5>
+                <span class="text-olive-600 font-bold ml-4">{formatPrice(item.prezzo)}</span>
+                </div>
+                {item.descrizione && <p class="text-stone-600 text-sm italic">{item.descrizione}</p>}
+            </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Secondi -->
+    <div class="text-center mb-12 mt-16">
+        <h3 class="text-3xl font-bold text-stone-800 mb-2 font-serif">Secondi Piatti</h3>
+        <div class="w-16 h-1 bg-olive-600 mx-auto"></div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <div>
+        <h4 class="text-xl font-bold text-olive-700 mb-6 mt-8 border-b border-olive-200 pb-2 inline-block">Terra</h4>
+        {menuData.secondi.terra.map(item => (
+            <div class="mb-6 break-inside-avoid">
+                <div class="flex justify-between items-baseline mb-1">
+                <h5 class="text-lg font-bold text-stone-800">{item.nome}</h5>
+                <span class="text-olive-600 font-bold ml-4">{formatPrice(item.prezzo)}</span>
+                </div>
+                {item.descrizione && <p class="text-stone-600 text-sm italic">{item.descrizione}</p>}
+            </div>
+        ))}
+      </div>
+      <div>
+        <h4 class="text-xl font-bold text-olive-700 mb-6 mt-8 border-b border-olive-200 pb-2 inline-block">Mare</h4>
+        {menuData.secondi.mare.map(item => (
+            <div class="mb-6 break-inside-avoid">
+                <div class="flex justify-between items-baseline mb-1">
+                <h5 class="text-lg font-bold text-stone-800">{item.nome}</h5>
+                <span class="text-olive-600 font-bold ml-4">{formatPrice(item.prezzo)}</span>
+                </div>
+                {item.descrizione && <p class="text-stone-600 text-sm italic">{item.descrizione}</p>}
+            </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Contorni -->
+    <div class="text-center mb-12 mt-16">
+        <h3 class="text-3xl font-bold text-stone-800 mb-2 font-serif">Contorni</h3>
+        <div class="w-16 h-1 bg-olive-600 mx-auto"></div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
+      {menuData.contorni.map(item => (
+        <div class="mb-6 break-inside-avoid">
+            <div class="flex justify-between items-baseline mb-1">
+            <h5 class="text-lg font-bold text-stone-800">{item.nome}</h5>
+            <span class="text-olive-600 font-bold ml-4">{formatPrice(item.prezzo)}</span>
+            </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Pizze -->
+    <div class="text-center mb-12 mt-16">
+        <h3 class="text-3xl font-bold text-stone-800 mb-2 font-serif">Le Nostre Pizze</h3>
+        <div class="w-16 h-1 bg-olive-600 mx-auto"></div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <div>
+        <h4 class="text-xl font-bold text-olive-700 mb-6 mt-8 border-b border-olive-200 pb-2 inline-block">Classiche</h4>
+        {menuData.pizze.classiche.map(item => (
+            <div class="mb-6 break-inside-avoid">
+                <div class="flex justify-between items-baseline mb-1">
+                <h5 class="text-lg font-bold text-stone-800">{item.nome}</h5>
+                <span class="text-olive-600 font-bold ml-4">{formatPrice(item.prezzo)}</span>
+                </div>
+            </div>
+        ))}
+        
+        <h4 class="text-xl font-bold text-olive-700 mb-6 mt-8 border-b border-olive-200 pb-2 inline-block">Altre Classiche</h4>
+        {menuData.pizze.altre_classiche.map(item => (
+            <div class="mb-6 break-inside-avoid">
+                <div class="flex justify-between items-baseline mb-1">
+                <h5 class="text-lg font-bold text-stone-800">{item.nome}</h5>
+                <span class="text-olive-600 font-bold ml-4">{formatPrice(item.prezzo)}</span>
+                </div>
+            </div>
+        ))}
+      </div>
+      <div>
+        <h4 class="text-xl font-bold text-olive-700 mb-6 mt-8 border-b border-olive-200 pb-2 inline-block">Bianche e Focacce</h4>
+        {menuData.pizze.bianche_e_focacce.map(item => (
+            <div class="mb-6 break-inside-avoid">
+                <div class="flex justify-between items-baseline mb-1">
+                <h5 class="text-lg font-bold text-stone-800">{item.nome}</h5>
+                <span class="text-olive-600 font-bold ml-4">{formatPrice(item.prezzo)}</span>
+                </div>
+            </div>
+        ))}
+        
+        <h4 class="text-xl font-bold text-olive-700 mb-6 mt-8 border-b border-olive-200 pb-2 inline-block">Prelibate</h4>
+        {menuData.pizze.prelibate.map(item => (
+            <div class="mb-6 break-inside-avoid">
+                <div class="flex justify-between items-baseline mb-1">
+                <h5 class="text-lg font-bold text-stone-800">{item.nome}</h5>
+                <span class="text-olive-600 font-bold ml-4">{formatPrice(item.prezzo)}</span>
+                </div>
+            </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Dessert e Caffè -->
+    <div class="text-center mb-12 mt-16">
+        <h3 class="text-3xl font-bold text-stone-800 mb-2 font-serif">Dessert e Caffetteria</h3>
+        <div class="w-16 h-1 bg-olive-600 mx-auto"></div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <div>
+        <h4 class="text-xl font-bold text-olive-700 mb-6 mt-8 border-b border-olive-200 pb-2 inline-block">Dolci</h4>
+        {menuData.dessert_e_caffè.dolci.map(item => (
+            <div class="mb-6 break-inside-avoid">
+                <div class="flex justify-between items-baseline mb-1">
+                <h5 class="text-lg font-bold text-stone-800">{item.nome}</h5>
+                <span class="text-olive-600 font-bold ml-4">{formatPrice(item.prezzo)}</span>
+                </div>
+            </div>
+        ))}
+      </div>
+      <div>
+        <h4 class="text-xl font-bold text-olive-700 mb-6 mt-8 border-b border-olive-200 pb-2 inline-block">Caffetteria</h4>
+        {menuData.dessert_e_caffè.caffetteria.map(item => (
+            <div class="mb-6 break-inside-avoid">
+                <div class="flex justify-between items-baseline mb-1">
+                <h5 class="text-lg font-bold text-stone-800">{item.nome}</h5>
+                <span class="text-olive-600 font-bold ml-4">{formatPrice(item.prezzo)}</span>
+                </div>
+            </div>
+        ))}
+        <div class="mt-8 p-4 bg-olive-50 rounded-lg border border-olive-100 text-center">
+            <span class="font-bold text-stone-800">Coperto: </span>
+            <span class="text-olive-600 font-bold">{formatPrice(menuData.dessert_e_caffè.coperto)}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bevande e Vini -->
+    <div class="text-center mb-12 mt-16">
+        <h3 class="text-3xl font-bold text-stone-800 mb-2 font-serif">Bevande e Vini</h3>
+        <div class="w-16 h-1 bg-olive-600 mx-auto"></div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <div>
+        <h4 class="text-xl font-bold text-olive-700 mb-6 mt-8 border-b border-olive-200 pb-2 inline-block">Bibite</h4>
+        {menuData.bevande.bibite.map(item => (
+            <div class="mb-6 break-inside-avoid">
+                <div class="flex justify-between items-baseline mb-1">
+                <h5 class="text-lg font-bold text-stone-800">{item.nome}</h5>
+                <span class="text-olive-600 font-bold ml-4">{formatPrice(item.prezzo)}</span>
+                </div>
+            </div>
+        ))}
+        
+        <h4 class="text-xl font-bold text-olive-700 mb-6 mt-8 border-b border-olive-200 pb-2 inline-block">Birre alla Spina</h4>
+        {menuData.bevande.birre_spina.map(item => (
+            <div class="mb-6 break-inside-avoid">
+                <div class="flex justify-between items-baseline mb-1">
+                <h5 class="text-lg font-bold text-stone-800">{item.nome}</h5>
+                <span class="text-olive-600 font-bold ml-4">{formatPrice(item.prezzo)}</span>
+                </div>
+            </div>
+        ))}
+
+        <h4 class="text-xl font-bold text-olive-700 mb-6 mt-8 border-b border-olive-200 pb-2 inline-block">Birre in Vetro</h4>
+        {menuData.bevande.birre_vetro.map(item => (
+            <div class="mb-6 break-inside-avoid">
+                <div class="flex justify-between items-baseline mb-1">
+                <h5 class="text-lg font-bold text-stone-800">{item.nome}</h5>
+                <span class="text-olive-600 font-bold ml-4">{formatPrice(item.prezzo)}</span>
+                </div>
+            </div>
+        ))}
+      </div>
+      <div>
+        <h4 class="text-xl font-bold text-olive-700 mb-6 mt-8 border-b border-olive-200 pb-2 inline-block">Vini alla Spina</h4>
+        {menuData.vini.alla_spina.map(item => (
+            <div class="mb-6 break-inside-avoid">
+                <div class="flex justify-between items-baseline mb-1">
+                <h5 class="text-lg font-bold text-stone-800">{item.nome}</h5>
+                <span class="text-olive-600 font-bold ml-4">{formatPrice(item.prezzo)}</span>
+                </div>
+            </div>
+        ))}
+        
+        <h4 class="text-xl font-bold text-olive-700 mb-6 mt-8 border-b border-olive-200 pb-2 inline-block">Prosecchi</h4>
+        {menuData.vini.prosecchi.map(item => (
+            <div class="mb-6 break-inside-avoid">
+                <div class="flex justify-between items-baseline mb-1">
+                <h5 class="text-lg font-bold text-stone-800">{item.nome}</h5>
+                <span class="text-olive-600 font-bold ml-4">{formatPrice(item.prezzo)}</span>
+                </div>
+            </div>
+        ))}
+
+        <h4 class="text-xl font-bold text-olive-700 mb-6 mt-8 border-b border-olive-200 pb-2 inline-block">Vini Bianchi</h4>
+        {menuData.vini.bianchi.map(item => (
+            <div class="mb-6 break-inside-avoid">
+                <div class="flex justify-between items-baseline mb-1">
+                <h5 class="text-lg font-bold text-stone-800">{item.nome}</h5>
+                <span class="text-olive-600 font-bold ml-4">{formatPrice(item.prezzo)}</span>
+                </div>
+            </div>
+        ))}
+
+        <h4 class="text-xl font-bold text-olive-700 mb-6 mt-8 border-b border-olive-200 pb-2 inline-block">Vini Rossi</h4>
+        {menuData.vini.rossi.map(item => (
+            <div class="mb-6 break-inside-avoid">
+                <div class="flex justify-between items-baseline mb-1">
+                <h5 class="text-lg font-bold text-stone-800">{item.nome}</h5>
+                <span class="text-olive-600 font-bold ml-4">{formatPrice(item.prezzo)}</span>
+                </div>
+            </div>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>
