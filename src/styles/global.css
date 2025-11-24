@@ -13,3 +13,60 @@
   --color-olive-900: #2a341b;
   --color-olive-950: #161c0d;
 }
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 1s ease-out forwards;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out forwards;
+    opacity: 0;
+  }
+  
+  .animate-slide-up-delay-1 {
+    animation: slideUp 0.8s ease-out 0.2s forwards;
+    opacity: 0;
+  }
+  
+  .animate-slide-up-delay-2 {
+    animation: slideUp 0.8s ease-out 0.4s forwards;
+    opacity: 0;
+  }
+
+  .animate-zoom-in {
+    animation: zoomIn 20s linear infinite alternate;
+  }
+
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoomIn {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}

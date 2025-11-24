@@ -7,6 +7,9 @@ const links = [
   { name: 'Servizi', href: '/#services' },
   { name: 'Info & Contatti', href: '/#info' },
 ];
+
+const menuLink = links.find(link => link.name === 'Menu') || { name: 'Menu', href: '/menu' };
+const otherLinks = links.filter(link => link.name !== 'Menu');
 ---
 
 <nav class="bg-white/90 backdrop-blur-md fixed w-full z-50 shadow-sm">
@@ -19,12 +22,32 @@ const links = [
       </div>
       
       <!-- Desktop Menu -->
-      <div class="hidden md:block">
-        <div class="ml-10 flex items-baseline space-x-8">
-          {links.map(link => (
-            <a href={link.href} class="hover:text-olive-600 px-3 py-2 rounded-md text-sm font-medium transition-colors text-stone-600">{link.name}</a>
-          ))}
+      <div class="hidden md:flex items-center space-x-8">
+        <a href={menuLink.href} class="text-olive-700 hover:text-olive-800 px-4 py-2 rounded-md text-base font-bold transition-colors uppercase tracking-widest border-2 border-olive-600 hover:bg-olive-50">
+            {menuLink.name}
+        </a>
+
+        <div class="relative group">
+            <button class="flex items-center text-stone-600 hover:text-olive-600 px-3 py-2 rounded-md text-sm font-medium transition-colors focus:outline-none">
+                <span>Esplora</span>
+                <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+            </button>
+            <div class="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-left">
+                <div class="py-1">
+                    {otherLinks.map(link => (
+                        <a href={link.href} class="block px-4 py-2 text-sm text-stone-700 hover:bg-stone-50 hover:text-olive-600">
+                            {link.name}
+                        </a>
+                    ))}
+                </div>
+            </div>
         </div>
+
+        <a href="tel:+390119711419" class="bg-olive-600 text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-olive-700 transition-colors shadow-md hover:shadow-lg transform hover:-translate-y-0.5 duration-200">
+            Chiama Ora
+        </a>
       </div>
 
       <!-- Mobile Menu Button -->
