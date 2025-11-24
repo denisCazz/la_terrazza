@@ -4,20 +4,48 @@ import CookieBanner from '../components/CookieBanner.astro';
 
 interface Props {
 	title: string;
+    description?: string;
+    image?: string;
 }
 
-const { title } = Astro.props;
+const { 
+    title, 
+    description = "Pizzeria Ristorante La Terrazza a Carmagnola (ex Tap-in). Cucina tradizionale, pizze cotte nel forno a legna e ingredienti di prima qualità. Prenota ora!",
+    image = "/foto_orizzontale.jpg"
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://laterrazzacarmagnola.it');
 ---
 
 <!doctype html>
 <html lang="it">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Pizzeria Ristorante La Terrazza - Carmagnola" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+        
+        <!-- SEO -->
 		<title>{title}</title>
+		<meta name="description" content={description} />
+        <meta name="keywords" content="pizzeria, ristorante, carmagnola, tap-in, la terrazza, cucina italiana, pizza, forno a legna, eventi, cena" />
+        <link rel="canonical" href={canonicalURL} />
+        <meta name="robots" content="index, follow" />
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={Astro.url} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={new URL(image, Astro.url)} />
+
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content={Astro.url} />
+        <meta property="twitter:title" content={title} />
+        <meta property="twitter:description" content={description} />
+        <meta property="twitter:image" content={new URL(image, Astro.url)} />
+
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">

@@ -7,9 +7,9 @@
   --color-olive-300: #b3c598;
   --color-olive-400: #8ea668;
   --color-olive-500: #6d8a41;
-  --color-olive-600: #556b2f;
-  --color-olive-700: #445626;
-  --color-olive-800: #384622;
-  --color-olive-900: #2f3a1f;
-  --color-olive-950: #192010;
+  --color-olive-600: #4d612a; /* Darkened for better contrast on white */
+  --color-olive-700: #3d4d22;
+  --color-olive-800: #323f1e;
+  --color-olive-900: #2a341b;
+  --color-olive-950: #161c0d;
 }
