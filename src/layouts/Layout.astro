@@ -25,6 +25,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://laterraz
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
         
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-BXRRNKZ7WY"></script>
+        <script is:inline>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-BXRRNKZ7WY');
+        </script>
+
         <!-- SEO -->
 		<title>{title}</title>
 		<meta name="description" content={description} />
