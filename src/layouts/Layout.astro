@@ -11,10 +11,12 @@ interface Props {
 const { 
     title, 
     description = "Pizzeria Ristorante La Terrazza a Carmagnola (ex Tap-in). Cucina tradizionale, pizze cotte nel forno a legna e ingredienti di prima qualità. Prenota ora!",
-    image = "/foto_orizzontale.jpg"
+    image = "/logo.png"
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://laterrazzacarmagnola.it');
+const siteUrl = Astro.site || 'https://laterrazzacarmagnola.it';
+const canonicalURL = new URL(Astro.url.pathname, siteUrl);
+const socialImageURL = new URL(image, siteUrl);
 ---
 
 <!doctype html>
@@ -44,10 +46,17 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://laterraz
 
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={Astro.url} />
+        <meta property="og:url" content={canonicalURL} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
-        <meta property="og:image" content={new URL(image, Astro.url)} />
+        <meta property="og:image" content={socialImageURL} />
+
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content={canonicalURL} />
+        <meta property="twitter:title" content={title} />
+        <meta property="twitter:description" content={description} />
+        <meta property="twitter:image" content={socialImageURL} />
 
         <!-- Twitter -->
         <meta property="twitter:card" content="summary_large_image" />
