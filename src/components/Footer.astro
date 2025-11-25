@@ -1,25 +1,116 @@
 ---
 const currentYear = new Date().getFullYear();
+
+const hours = [
+  { day: "Lunedì", time: "18:30 - 23:00" },
+  { day: "Martedì", time: "Chiuso" },
+  { day: "Mercoledì", time: "18:30 - 23:00" },
+  { day: "Giovedì", time: "18:30 - 23:00" },
+  { day: "Venerdì", time: "18:30 - 23:00" },
+  { day: "Sabato", time: "18:30 - 23:00" },
+  { day: "Domenica", time: "18:30 - 23:00" },
+];
 ---
 
-<footer class="bg-stone-950 text-stone-400 py-8 border-t border-stone-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="text-center md:text-left">
-                <span class="text-lg font-serif font-bold text-white block">La Terrazza</span>
-                <span class="text-sm">© {currentYear} Tutti i diritti riservati.</span>
-            </div>
+<footer id="info" class="bg-stone-950 text-stone-400 border-t border-stone-800">
+    <!-- Main Footer Content (formerly Info Section) -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
             
-            <div class="flex flex-col md:flex-row items-center gap-4 md:gap-6">
-                <div class="flex gap-6">
-                    <a href="/privacy-policy" class="hover:text-white transition-colors text-sm">Privacy Policy</a>
-                    <a href="/cookie-policy" class="hover:text-white transition-colors text-sm">Cookie Policy</a>
+            <!-- Hours -->
+            <div class="animate-on-scroll">
+                <h3 class="text-2xl font-bold mb-6 text-olive-500">Orari di Apertura</h3>
+                <ul class="space-y-3">
+                    {hours.map(item => (
+                        <li class="flex justify-between border-b border-stone-800 pb-2 hover:bg-stone-900 transition-colors px-2 rounded">
+                            <span class="font-medium text-stone-300">{item.day}</span>
+                            <span class={item.time === 'Chiuso' ? 'text-red-400' : 'text-stone-400'}>{item.time}</span>
+                        </li>
+                    ))}
+                </ul>
+                <div class="mt-8">
+                    <h4 class="text-lg font-semibold text-olive-500 mb-2">Consegna a domicilio</h4>
+                    <p class="text-stone-400 text-sm">Disponibile Lun, Mer, Gio, Ven, Dom: 19:00 - 23:00</p>
                 </div>
-                <div class="text-sm flex items-center gap-1">
-                    <span>Partner digitale:</span>
-                    <a href="https://bitora.it" target="_blank" rel="noopener noreferrer" class="text-olive-500 hover:text-olive-400 font-medium transition-colors">
-                        bitora.it
-                    </a>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="text-center md:text-left animate-on-scroll" style="transition-delay: 200ms;">
+                <h3 class="text-2xl font-bold mb-6 text-olive-500">Contatti</h3>
+                <div class="space-y-4">
+                    <p class="flex items-center justify-center md:justify-start gap-3 group">
+                        <span class="text-2xl group-hover:scale-110 transition-transform" aria-hidden="true">📍</span>
+                        <span class="text-stone-300">Via Susa 16, 10022 Carmagnola (TO)</span>
+                    </p>
+                    <p class="flex items-center justify-center md:justify-start gap-3 group">
+                        <span class="text-2xl group-hover:scale-110 transition-transform" aria-hidden="true">📞</span>
+                        <a href="tel:+390119711419" class="text-stone-300 hover:text-olive-500 transition-colors" aria-label="Chiama il numero fisso 011 971 1419">011 971 1419</a>
+                    </p>
+                    <p class="flex items-center justify-center md:justify-start gap-3 group">
+                        <span class="text-2xl group-hover:scale-110 transition-transform" aria-hidden="true">📱</span>
+                        <a href="tel:+393345849226" class="text-stone-300 hover:text-olive-500 transition-colors" aria-label="Chiama il cellulare +39 334 584 9226">+39 334 584 9226</a>
+                    </p>
+                    <p class="flex items-center justify-center md:justify-start gap-3 group">
+                        <span class="text-2xl group-hover:scale-110 transition-transform" aria-hidden="true">✉️</span>
+                        <a href="mailto:laterrazzadiale@libero.it" class="text-stone-300 hover:text-olive-500 transition-colors" aria-label="Invia una email a laterrazzadiale@libero.it">laterrazzadiale@libero.it</a>
+                    </p>
+                    <div class="mt-8">
+                        <a href="mailto:laterrazzadiale@libero.it" class="inline-block bg-olive-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-olive-700 transition-colors w-full text-center hover:scale-105 transform duration-200 shadow-lg">
+                            Invia un messaggio
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map Placeholder -->
+            <div id="map-container" class="h-full min-h-[300px] bg-stone-900 rounded-lg overflow-hidden relative animate-on-scroll border border-stone-800" style="transition-delay: 400ms;">
+                <div id="map-placeholder" class="absolute inset-0 flex items-center justify-center text-center p-4">
+                    <p class="text-stone-500 text-sm">
+                        Per visualizzare la mappa di Google Maps è necessario accettare i cookie.
+                    </p>
+                </div>
+            </div>
+            <script>
+                const container = document.getElementById('map-container');
+                const placeholder = document.getElementById('map-placeholder');
+                
+                if (localStorage.getItem('cookie-consent') === 'true' && container && placeholder) {
+                    placeholder.style.display = 'none';
+                    const iframe = document.createElement('iframe');
+                    iframe.width = "100%";
+                    iframe.height = "100%";
+                    iframe.style.border = "0";
+                    iframe.style.minHeight = "300px";
+                    iframe.loading = "lazy";
+                    iframe.allowFullscreen = true;
+                    iframe.title = "Mappa di Google Maps";
+                    iframe.src = "https://maps.google.com/maps?q=Via+Susa+16+Carmagnola&t=&z=15&ie=UTF8&iwloc=&output=embed";
+                    container.appendChild(iframe);
+                }
+            </script>
+        </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="bg-stone-950 border-t border-stone-900 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="text-center md:text-left">
+                    <img src="/logo.png" alt="La Terrazza" class="h-12 w-auto mb-2 mx-auto md:mx-0" />
+                    <span class="text-xs text-stone-500">© {currentYear} Tutti i diritti riservati.</span>
+                </div>
+                
+                <div class="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+                    <div class="flex gap-6">
+                        <a href="/privacy-policy" class="text-stone-500 hover:text-white transition-colors text-xs">Privacy Policy</a>
+                        <a href="/cookie-policy" class="text-stone-500 hover:text-white transition-colors text-xs">Cookie Policy</a>
+                    </div>
+                    <div class="text-xs text-stone-500 flex items-center gap-1">
+                        <span>Partner digitale:</span>
+                        <a href="https://bitora.it" target="_blank" rel="noopener noreferrer" class="text-olive-600 hover:text-olive-500 font-medium transition-colors">
+                            bitora.it
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
